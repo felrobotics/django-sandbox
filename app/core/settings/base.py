@@ -48,9 +48,12 @@ EXTERNAL_APPS = [
 INTERNAL_APPS = [
     # "product",
     "blog",
+    "challenges",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + INTERNAL_APPS
+
+APPEND_SLASH = False
 
 MIDDLEWARE = [
     "simple_history.middleware.HistoryRequestMiddleware",
