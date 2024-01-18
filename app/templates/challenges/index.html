@@ -1,0 +1,29 @@
+{% extends "challenges/base.html" %}
+
+{% load static %}
+{% block css_files %}
+<link rel="stylesheet" href="{% static "challenges/styles.css" %}">
+<link rel="stylesheet" href="{% static "challenges/challenges.css" %}">
+<link rel="stylesheet" href="{% static "challenges/header.css" %}">
+{% endblock css_files %}
+
+{% block title %}Montly Challenges!{% endblock title %}
+
+
+{% block content %}
+
+{% include "challenges/includes/header.html" with active_page="index" %}
+
+<h1>Montly Challenges!</h1>
+<ul>
+    {% for month in months  %}
+    {% comment %} STATIC CREATED URL {% endcomment %}
+    <li><a href="/challenges/{{month}}">{{month|title}}</a> (static)</li>
+    {% comment %} DYNAMIC CREATED URL {% endcomment %}
+    <li><a href="{% url "index" %}{{ month }}">{{month|title}}</a> (dynamic no arg)</li>
+    <li><a href="{% url "month-challenge-with-arg"  month %}">{{month|title}}</a> (dynamic with arg)</li>
+    {% endfor %}
+    
+</ul>
+{% endblock content %}
+    

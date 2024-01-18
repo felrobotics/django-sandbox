@@ -14,3 +14,8 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",  # noqa
     }
 }
+
+
+STATICFILES_DIRS = [
+    "/var/www/static/",
+]

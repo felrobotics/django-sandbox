@@ -15,10 +15,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
+from django.views.generic import RedirectView
+
+# urlpatterns = patterns(
+#     "",
+#     (r"admin/", admin.site.urls),
+#     # Redirect login to login/
+#     # (r'^login$', RedirectView.as_view(url = '/login/')),
+#     # Handle the page with the slash.
+#     (r"^login/?$", include("challenges.urls")),
+# )
+
+handler404 = "challenges.views.custom_404"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("blog.urls")),
-    path("challenges/", include("challenges.urls")),
+    path("blog/", include("blog.urls")),
+    re_path(r"^challenges/$", RedirectView.as_view(url="/challenges")),  # remove slash
+    re_path(r"^challenges$", include("challenges.urls")),
+    re_path(r"^challenges/", include("challenges.urls")),
+    # re_path(r'^challenges$', RedirectView.as_view(url = '/login/')),
+    # re_path(r"^challenges/?$", include("challenges.urls")),
 ]

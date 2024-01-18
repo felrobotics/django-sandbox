@@ -53,7 +53,8 @@ INTERNAL_APPS = [
 
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + INTERNAL_APPS
 
-APPEND_SLASH = False
+# APPEND_SLASH = False
+# REMOVE_SLASH = True
 
 MIDDLEWARE = [
     "simple_history.middleware.HistoryRequestMiddleware",
@@ -82,7 +83,8 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        # "DIRS": [] # NOTE: default is empty
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -144,7 +146,11 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+SILENCED_SYSTEM_CHECKS = ["urls.W001"]
 
 
 # # DRF
