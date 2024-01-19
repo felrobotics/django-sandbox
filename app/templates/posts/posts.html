@@ -1,0 +1,26 @@
+{% extends "posts/base.html" %}
+{% load static %} 
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "posts/posts.css" %}"> 
+<link rel="stylesheet" href="{% static "posts/post.css" %}"> 
+{% endblock css_files %} 
+
+{% block title %}Posts{% endblock title %} 
+
+{% block content %} 
+
+{% include "posts/includes/header.html" with active_page="posts" %}
+
+<h1>Posts list</h1>
+
+<section id="posts">
+  <h2>My collected Posts</h2>
+  <ul>    
+    {% include "posts/includes/post-teaser.html" %}
+    {% include "posts/includes/post-teaser.html" %}
+    {% include "posts/includes/post-teaser.html" %}
+  </ul>
+</section>
+
+{% endblock content %}

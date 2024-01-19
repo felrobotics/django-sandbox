@@ -1,0 +1,1 @@
+App created after following course udemy "Python Django - The Practical Guide"

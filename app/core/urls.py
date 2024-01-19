@@ -32,9 +32,8 @@ handler404 = "challenges.views.custom_404"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("blog/", include("blog.urls")),
-    re_path(r"^challenges/$", RedirectView.as_view(url="/challenges")),  # remove slash
-    re_path(r"^challenges$", include("challenges.urls")),
-    re_path(r"^challenges/", include("challenges.urls")),
-    # re_path(r'^challenges$', RedirectView.as_view(url = '/login/')),
-    # re_path(r"^challenges/?$", include("challenges.urls")),
+    re_path(r"^challenges/$", RedirectView.as_view(url="/challenges")),  # redir to rm /
+    re_path(r"^challenges$", include("challenges.urls")),  # path without /
+    re_path(r"^challenges/", include("challenges.urls")),  # path with /
+    path("posts/", include("posts.urls")),
 ]

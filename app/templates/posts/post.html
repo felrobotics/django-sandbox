@@ -1,0 +1,39 @@
+{% extends "posts/base.html" %}
+{% load static %} 
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "posts/post-detail.css" %}"> 
+{% endblock css_files %} 
+
+{% block title %}
+Posts Title
+{% endblock title %} 
+
+{% block content %} 
+
+{% include "posts/includes/header.html" with active_page="post" %}
+
+<h1>Posts Title </h1>
+
+<section id="summary">
+<h2>Post subheader</h2>
+<article>
+  <img src="" alt="Post image">
+  <address>By Felipe</address>
+  <div>Last updated on <time>July 10th</time> </div>
+</article>
+
+<main>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet numquam minus 
+    voluptatum fuga dicta at sit neque, ipsam odit sequi, ex placeat, vero soluta iste nesciunt nulla ipsa magni?
+  </p>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint error aspernatur vero. Ea facilis quasi architecto error 
+    possimus officiis vel numquam vitae eius. Maxime sit dolores eligendi esse eaque voluptate!
+  </p>
+</ma in>
+</section>
+
+{% endblock content %}

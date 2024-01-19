@@ -1,0 +1,38 @@
+{% extends "posts/base.html" %} 
+{% load static %} 
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "posts/index.css" %}"> 
+<link rel="stylesheet" href="{% static "posts/post.css" %}"> 
+<link rel="stylesheet" href="{% static "posts/post-teaser.css" %}"> 
+{% endblock css_files %} 
+
+{% block title %}My blog{% endblock title %} 
+
+{% block content %} 
+
+{% include "posts/includes/header.html" with active_page="welcome" %}
+
+<h1>Welcome to my blog!</h1>
+
+<section id="welcome">
+  <header>
+    <img src="" alt="Felipe - The author of this blog" />
+    <h2>Felipe's Blog</h2>
+  </header>
+  <p>Hi I am Felipe and I love to blog about programming and tech!</p>
+</section>
+
+<section id="latest-posts">
+  <h2>Latest posts</h2>
+  <ul>
+    <li>
+      {% include "posts/includes/post-teaser.html" %}
+      {% include "posts/includes/post-teaser.html" %}
+      {% include "posts/includes/post-teaser.html" %}
+    </li>
+  </ul>
+</section>
+
+<section id="about">ABOUT SECTION</section>
+{% endblock content %}
