@@ -50,6 +50,7 @@ INTERNAL_APPS = [
     "blog",
     "challenges",
     "posts",
+    "book_outlet",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + EXTERNAL_APPS + INTERNAL_APPS
