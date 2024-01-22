@@ -1,0 +1,22 @@
+{% extends "book_outlet/base.html" %}
+
+{% block title %}All Books{% endblock title %} 
+
+{% block content %}
+
+{% comment %} MANUAL LIST {% endcomment %}
+<ul>
+  {% for book in books  %}
+  {% comment %} you can construct the url as follows (before slug we were using id) {% endcomment %}
+  {% comment %} <li><a href="{% url "book_detail" book.id %}">{{ book.title }}</a> (with url)</li> {% endcomment %}
+  
+  {% comment %} However there is a way, by overriding built-in methods get_abosule_url  {% endcomment %}
+  <li><a href="{{ book.get_absolute_url }}">{{ book.title }}</a> (Rating: {{book.rating}}) (overriding get_absolute_url)</li>
+  {% endfor %}
+</ul>
+
+<hr>
+
+<p>Total number of books: {{ total_number_of_books }}</p>
+<p>Average rating: {{ average_rating.rating__avg }}</p>
+{% endblock content %}
