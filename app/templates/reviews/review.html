@@ -9,8 +9,11 @@
   {% comment %} Let's change the method to POST {% endcomment %}
   {% comment %} You can change the url for sendig the request with e.g  action="/user-review"  
   default is empty or action="/" {% endcomment %}
-  <form action="/" method="POST">
+  <form action="/feedback/" method="POST">
     {% csrf_token %}
+    {% if has_error %}
+    <p>This form is invalid, please enter a valid name</p>
+    {% endif %}
     <label for="username">Your name</label>
     <input id="username" name="username" type="text">
     {% comment %} 
