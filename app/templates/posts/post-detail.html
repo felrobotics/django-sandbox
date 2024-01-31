@@ -1,0 +1,41 @@
+{% extends "posts/base.html" %}
+{% load static %} 
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "posts/post-detail.css" %}"> 
+{% endblock css_files %} 
+
+{% block title %}
+{{ post.title }}
+{% endblock title %} 
+
+{% block content %} 
+
+{% include "posts/includes/header.html" with active_page="post" %}
+
+<h1>{{ post.title }}</h1>
+
+<section id="summary">
+
+  <h2>{{post.title}} </h2>
+
+  <div>
+    {% for tag in post_tags  %}
+    <span class="tag">{{ tag.caption }}</span>
+    {% endfor %}
+  </div>
+
+  <p style="color:white;">(Title is shown as h2, h1 is hidden, sorry template!)</p>
+  <article>
+    <img src="{% static "posts/images/"|add:post.image_name %}" alt="{{ post.title }}" />
+    <address>By <a href="{{post.author}}">{{ post.author }}</a></address>
+    <div>Last updated on <time>{{ post.date|date:"d M Y" }}</time></div> 
+  </article>
+
+  <main>
+    {{ post.content|linebreaks }}
+  </main>
+</section>
+
+{% endblock content %}
+  

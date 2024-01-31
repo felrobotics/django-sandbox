@@ -17,9 +17,9 @@
 <section id="posts">
   <h2>My collected Posts</h2>
   <ul>    
-    {% include "posts/includes/post-teaser.html" %}
-    {% include "posts/includes/post-teaser.html" %}
-    {% include "posts/includes/post-teaser.html" %}
+    {% for post in all_posts %}
+      {% include "posts/includes/post-teaser.html" %}
+    {% endfor %}
   </ul>
 </section>
 
