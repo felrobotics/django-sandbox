@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Review</title>
+</head>
+<body>
+  {% comment %} Let's change the method to POST {% endcomment %}
+  {% comment %} You can change the url for sendig the request with e.g  action="/user-review"  
+  default is empty or action="/" {% endcomment %}
+  <form action="/" method="POST">
+    {% csrf_token %}
+    <label for="username">Your name</label>
+    <input id="username" name="username" type="text">
+    {% comment %} 
+    Default button is type="submit" so you can omit it, but if we change it to e.g. type="button"
+    Then nothing is submited and page is not reload. 
+    Submit by default will be a GET request
+     {% endcomment %}
+    <button>Send</button> 
+  </form>
+</body>
+</html>
