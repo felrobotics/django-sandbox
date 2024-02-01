@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Review</title>
-</head>
-<body>
+{% extends "reviews/base.html" %}
+
+{% block title %}Your Review{% endblock title %}Your Review
+
+{% block content %}
   {% comment %} Let's change the method to POST {% endcomment %}
   {% comment %} You can change the url for sendig the request with e.g  action="/user-review"  
   default is empty or action="/" {% endcomment %}
@@ -23,5 +20,4 @@
      {% endcomment %}
     <button>Send</button> 
   </form>
-</body>
-</html>
+{% endblock content %}

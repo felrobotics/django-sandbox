@@ -1,0 +1,22 @@
+{% extends "reviews/base.html" %}
+
+{% comment %} 
+This one is a better solution using class django.forms.Form
+{% endcomment %}
+
+{% block title %}Your Review{% endblock title %}Your Review
+
+{% block content %}
+  <form action="/feedback/better-review" method="POST">
+    {% csrf_token %}    
+    {% comment %} The magic is here: {% endcomment %}
+    {% comment %} {{ form }} {% endcomment %}
+
+    <br> 
+    {% comment %} But we can render the form individual parts {% endcomment %}
+    {{ form.user_name.label_tag }}
+    {{ form.user_name}}
+    {{ form.user_name.errors}}
+    <button type="submit">Send</button> 
+  </form>
+{% endblock content %}
