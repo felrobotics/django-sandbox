@@ -1,11 +1,11 @@
 ##-----------------------
 ## CUSTOM
 ##-----------------------
-.envs/.env.local
-.envs/.env.develop
-.envs/.env.qa
-.envs/.env.staging
-.envs/.env.prod
+.env.local
+.env.develop
+.env.qa
+.env.staging
+.env.prod
  
 
 

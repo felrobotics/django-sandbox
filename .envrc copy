@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# To approve current file changes with direnv run: `direnv allow`
+# To approve current folder with direnv run: `direnv allow`
 
 # https://stackoverflow.com/questions/47879565/docker-compose-env-vs-direnv-envrc
 # set -a makes everything export by default, set +a turns this off afterwards.
-
 set -a
 
 source .env
+# CONTEXT=""
+# [[ -f ".envrc.context" ]] && CONTEXT=$(< .envrc.context)
 watch_file ".env"
 
 if [[ -n "$DEPLOY_ENV" ]]; then
-  DOTENV_FILE="./.env.$DEPLOY_ENV"
+  DOTENV_FILE="./.envs/.env.$CONTEXT"
   if [[ -f "$DOTENV_FILE" ]]; then
-   echo "DEPLOY_ENV CHANGED: $DEPLOY_ENV"
-   echo "DOTENV_FILE: ${DOTENV_FILE}"
+   echo "CONTEXT CHANGED: $CONTEXT"
    source_env "$DOTENV_FILE"
   else
     echo "FILE: $DOTENV_FILE missing"
