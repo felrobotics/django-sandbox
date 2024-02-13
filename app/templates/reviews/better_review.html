@@ -7,16 +7,47 @@ This one is a better solution using class django.forms.Form
 {% block title %}Your Review{% endblock title %}Your Review
 
 {% block content %}
-  <form action="/feedback/better-review" method="POST">
+  <form  action="/feedback/better-review" method="POST">
     {% csrf_token %}    
     {% comment %} The magic is here: {% endcomment %}
     {% comment %} {{ form }} {% endcomment %}
 
     <br> 
     {% comment %} But we can render the form individual parts {% endcomment %}
-    {{ form.user_name.label_tag }}
-    {{ form.user_name}}
-    {{ form.user_name.errors}}
+
+
+    {% comment %} ORIGINAL SOLUTION, MANUALLY {% endcomment %}
+    {% comment %} <h3>This form was rendered manually, advantage, we can wrap son divs, but not 
+      optimal solution, since code is repeated manually
+    </h3>
+
+    <div class="form-control" {% if form.user_name.errors %}errors{% endif %}>      
+      {{ form.user_name.label_tag }}
+      {{ form.user_name}}
+      {{ form.user_name.errors}}
+    </div>
+
+    <div class="form-control" {% if form.review_text.errors %}errors{% endif %}>      
+      {{ form.review_text.label_tag }}
+      {{ form.review_text}}
+      {{ form.review_text.errors}}
+    </div> {% endcomment %}
+
+    {% comment %} THIS SOLUTION SIMPLIER BUT DO NOT WRAP FIELDS ON DIVS {% endcomment %}
+    {% comment %} <h3>However the next is rendered via form, there are no divs, between fields</h3>
+    {{ form }} {% endcomment %}
+
+    <h3>This is a better solution, by looping for all fields in the form, we avoid repeating code</h3>
+
+    {% for field in form %}
+    <div class="form-control" {% if field.errors %}errors{% endif %}>      
+      {{ field.label_tag }}
+      {{ field}}
+      {{ field.errors}}
+    </div>
+    {% endfor %}
+     
+
     <button type="submit">Send</button> 
   </form>
 {% endblock content %}
