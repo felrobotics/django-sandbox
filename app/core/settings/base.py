@@ -139,10 +139,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
-
-STATIC_URL = "static/"
+SILENCED_SYSTEM_CHECKS = ["urls.W001"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -150,12 +147,19 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_URL = "static/"
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-SILENCED_SYSTEM_CHECKS = ["urls.W001"]
-
-
 # # DRF
 # REST_FRAMEWORK = {}
+
+
+MEDIA_ROOT = BASE_DIR / "files"
+# part of the url that will be exposed to the outside world for accessing your uploaded files
+MEDIA_URL = "/files/"  # you choose the name e.g /files/, /uploads/, /user-media/, etc

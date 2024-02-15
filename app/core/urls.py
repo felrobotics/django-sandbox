@@ -19,6 +19,10 @@ from django.contrib import admin
 from django.urls import include, path, re_path
 from django.views.generic import RedirectView
 
+# static and settigs, are necessary in order to serve images
+from django.conf import settings
+from django.conf.urls.static import static
+
 # urlpatterns = patterns(
 #     "",
 #     (r"admin/", admin.site.urls),
@@ -40,4 +44,4 @@ urlpatterns = [
     path("book-outlet/", include("book_outlet.urls")),
     path("feedback/", include(arg="reviews.urls")),
     path("profiles/", include(arg="profiles.urls")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
