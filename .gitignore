@@ -6,7 +6,8 @@
 .env.qa
 .env.staging
 .env.prod
- 
+app/files/images
+app/temp/
 
 
 ##-----------------------
