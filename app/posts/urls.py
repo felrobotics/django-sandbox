@@ -5,7 +5,9 @@ from django.views.generic import RedirectView
 from . import views
 
 urlpatterns = [
-    path("", views.starting_page, name="starting-page"),  # starting page
+    path("", views.starting_page, name="starting-page"),  # posts (starting page)
     path("list", views.posts, name="posts-page"),
-    path("<slug:slug>", views.single_post, name="single-post"),  # posts/my-first-post
+    # posts/my-first-post
+    # posts/programming-is-fun
+    path("<slug:slug>", views.single_post, name="single-post"),
 ]

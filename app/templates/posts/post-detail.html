@@ -27,7 +27,8 @@
 
   <p style="color:white;">(Title is shown as h2, h1 is hidden, sorry template!)</p>
   <article>
-    <img src="{% static "posts/images/"|add:post.image_name %}" alt="{{ post.title }}" />
+    {% comment %} <img src="{% static "posts/images/"|add:post.image_name %}" alt="{{ post.title }}" /> {% endcomment %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" />
     <address>By <a href="{{post.author}}">{{ post.author }}</a></address>
     <div>Last updated on <time>{{ post.date|date:"d M Y" }}</time></div> 
   </article>

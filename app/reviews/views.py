@@ -159,6 +159,7 @@ class SingleReviewTemplateView(TemplateView):
         return context
 
 
+# http://127.0.0.1:8000/feedback/review/1
 class SingleReviewDetailView(DetailView):
     """This saves a lot of code, in the template you can use the model
     in lowercase, in this example review or object (review.name or object.name)
@@ -166,6 +167,13 @@ class SingleReviewDetailView(DetailView):
 
     template_name = "reviews/single_review.html"
     model = Review
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        loaded_review_id = self.object.id
+        favorite_id = self.request.session.get["favorite_review"]
+        context["is_favorite"] = favorite_id == str(loaded_review_id)
+        return context
 
 
 class ReviewFormView(FormView):
@@ -207,3 +215,11 @@ class ReviewCreateView(CreateView):
 # Similar to CreateView there is:
 # UpdateView
 # DeleteView
+
+
+class AddFavoriteView(View):
+    def post(self, request):
+        review_id = request.POST["review_id"]
+        # favorite_review = Review.objects.get(pk=review_id)
+        request.session["favorite_review"] = review_id
+        return HttpResponseRedirect("/feedback/review/" + review_id)

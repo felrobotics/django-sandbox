@@ -163,3 +163,6 @@ STATICFILES_DIRS = [
 MEDIA_ROOT = BASE_DIR / "files"
 # part of the url that will be exposed to the outside world for accessing your uploaded files
 MEDIA_URL = "/files/"  # you choose the name e.g /files/, /uploads/, /user-media/, etc
+
+
+# SESSION_COOKIE_AGE =  if not configured, the default is set to two weeks
