@@ -12,6 +12,7 @@ urlpatterns = [
     path("review-modelform", views.review_with_modelform),
     path("review-class", views.ReviewView.as_view()),
     path("reviews-template-view", views.ReviewListTemplateView.as_view()),
+    path("reviews/favorite", views.AddFavoriteView.as_view()),
     path("reviews", views.ReviewListView.as_view()),
     path("single-review-template-view/<int:id>", views.SingleReviewTemplateView.as_view()),
     # DetailView needs primary key or slug
