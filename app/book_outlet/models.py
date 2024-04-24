@@ -63,9 +63,7 @@ class Book(models.Model):
     #  Lets show other option, this one will prepoluate the slug in the admin/
     slug2 = models.SlugField(default="", blank=True, null=False, db_index=True)
     # many to many creates behinds the scenes a 3rd mapping table
-    published_countries = models.ManyToManyField(
-        to=Country, null=False, related_name="books"
-    )
+    published_countries = models.ManyToManyField(to=Country, related_name="books")
 
     def __str__(self) -> str:
         return f"{self.title} ({self.rating})"

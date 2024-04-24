@@ -2,8 +2,10 @@
 <header id="main-navigation">
     <h1><a href="{% url "starting-page" %}">Felipe's Blog</a></h1>
     <nav>
-        <a href="{% url "posts-page" %}">All posts</a>
+        <a href="{% url "posts-page-class" %}">All posts</a> 
+        <a href="{% url "read-later" %}">Stored Posts</a>
     </nav>
-</header>
+    <div class="active-page">active_page = {{active_page}}</div>
+  </header>
+  
 
-active_page = {{active_page}}

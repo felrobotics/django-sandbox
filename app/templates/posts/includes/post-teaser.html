@@ -3,7 +3,8 @@
 
 <li>
   <article class="post">
-    <a href="{% url "single-post" post.slug %}">
+    {% comment %} <a href="{% url "single-post" post.slug %}"> {% endcomment %}
+    <a href="{% url "single-post-view" post.slug %}">
       {% comment %} <img src="{% static "posts/images/"|add:post.image_name %}" alt="{{ post.title }}" /> {% endcomment %}
       <img src="{{ post.image.url }}" alt="{{ post.title }}" />
 

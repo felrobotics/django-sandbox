@@ -34,14 +34,20 @@ from django.conf.urls.static import static
 
 handler404 = "challenges.views.custom_404"
 
-urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("blog/", include("blog.urls")),
-    re_path(r"^challenges/$", RedirectView.as_view(url="/challenges")),  # redir to rm /
-    re_path(r"^challenges$", include("challenges.urls")),  # path without /
-    re_path(r"^challenges/", include("challenges.urls")),  # path with /
-    path("posts/", include("posts.urls")),
-    path("book-outlet/", include("book_outlet.urls")),
-    path("feedback/", include(arg="reviews.urls")),
-    path("profiles/", include(arg="profiles.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns = (
+    [
+        path("admin/", admin.site.urls),
+        path("blog/", include("blog.urls")),
+        re_path(
+            r"^challenges/$", RedirectView.as_view(url="/challenges")
+        ),  # redir to rm /
+        re_path(r"^challenges$", include("challenges.urls")),  # path without /
+        re_path(r"^challenges/", include("challenges.urls")),  # path with /
+        path("posts/", include("posts.urls")),
+        path("book-outlet/", include("book_outlet.urls")),
+        path("feedback/", include(arg="reviews.urls")),
+        path("profiles/", include(arg="profiles.urls")),
+    ]
+    + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+)

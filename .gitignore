@@ -8,7 +8,9 @@
 .env.prod
 app/files/images
 app/temp/
-
+static-files/
+.ebextensions 
+*.zip
 
 ##-----------------------
 ## DJANGO SPECIFIC 

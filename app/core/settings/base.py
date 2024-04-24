@@ -166,3 +166,6 @@ MEDIA_URL = "/files/"  # you choose the name e.g /files/, /uploads/, /user-media
 
 
 # SESSION_COOKIE_AGE =  if not configured, the default is set to two weeks
+
+# Where to collect all static files
+STATIC_ROOT = BASE_DIR / "static-files"
